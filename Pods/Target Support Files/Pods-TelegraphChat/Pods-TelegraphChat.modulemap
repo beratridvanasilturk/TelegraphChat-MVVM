@@ -1,0 +1,6 @@
+framework module Pods_TelegraphChat {
+  umbrella header "Pods-TelegraphChat-umbrella.h"
+
+  export *
+  module * { export * }
+}
