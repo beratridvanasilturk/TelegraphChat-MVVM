@@ -15,9 +15,10 @@
 		0B62818F235DF01000E35CAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B62818E235DF01000E35CAF /* LoginViewController.swift */; };
 		0B628191235DF01B00E35CAF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B628190235DF01B00E35CAF /* ChatViewController.swift */; };
 		58679E396606A10401481881 /* Pods_TelegraphChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26A6152BCB55AF21F479B10A /* Pods_TelegraphChat.framework */; };
-		EA4B258B2A216E0B0071763D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4B258A2A216E0B0071763D /* Message.swift */; };
 		EA6678492A22955B00B734F4 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6678472A22955B00B734F4 /* MessageCell.swift */; };
 		EA66784A2A22955B00B734F4 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6678482A22955B00B734F4 /* MessageCell.xib */; };
+		EA685D5A2A2CC5E3004FD7AE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA685D592A2CC5E3004FD7AE /* LoginViewModel.swift */; };
+		EA685D5C2A2CCAFB004FD7AE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA685D5B2A2CCAFB004FD7AE /* Message.swift */; };
 		EA9B88502A1C2F4B00A9AACC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9B884F2A1C2F4B00A9AACC /* Main.storyboard */; };
 		EAAD1C8B2A1ECC4600D91053 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAAD1C8A2A1ECC4600D91053 /* GoogleService-Info.plist */; };
 		EAC483F42A1C2E5300443F13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC483F22A1C2E5300443F13 /* LaunchScreen.storyboard */; };
@@ -36,9 +37,10 @@
 		0B628190235DF01B00E35CAF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		26A6152BCB55AF21F479B10A /* Pods_TelegraphChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TelegraphChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7799CFA7472EDB04B93972FD /* Pods-TelegraphChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelegraphChat.debug.xcconfig"; path = "Target Support Files/Pods-TelegraphChat/Pods-TelegraphChat.debug.xcconfig"; sourceTree = "<group>"; };
-		EA4B258A2A216E0B0071763D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Message.swift; path = TelegraphChat/Controllers/Message.swift; sourceTree = SOURCE_ROOT; };
 		EA6678472A22955B00B734F4 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EA6678482A22955B00B734F4 /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		EA685D592A2CC5E3004FD7AE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		EA685D5B2A2CCAFB004FD7AE /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA7B2A652A1C29BC0089C211 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
 		EA9B884F2A1C2F4B00A9AACC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EAAD1C8A2A1ECC4600D91053 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -81,11 +83,11 @@
 		0B628175235DEE8100E35CAF /* TelegraphChat */ = {
 			isa = PBXGroup;
 			children = (
+				EA685D5B2A2CCAFB004FD7AE /* Message.swift */,
 				0B628176235DEE8100E35CAF /* AppDelegate.swift */,
 				0B628178235DEE8100E35CAF /* SceneDelegate.swift */,
-				0B628194235DF03A00E35CAF /* Models */,
 				0B628193235DF03400E35CAF /* Views */,
-				0B628192235DF02000E35CAF /* Controllers */,
+				0B628192235DF02000E35CAF /* Scene */,
 				0B62817F235DEE8400E35CAF /* Assets.xcassets */,
 				EAEB19752A20FC8F005CC535 /* Constants.swift */,
 				EAD323F12A1C28F50039D137 /* Info.plist */,
@@ -94,15 +96,15 @@
 			path = TelegraphChat;
 			sourceTree = "<group>";
 		};
-		0B628192235DF02000E35CAF /* Controllers */ = {
+		0B628192235DF02000E35CAF /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				EA685D582A2CC595004FD7AE /* Login */,
 				0B62818A235DF00000E35CAF /* WelcomeViewController.swift */,
 				0B62818C235DF00B00E35CAF /* RegisterViewController.swift */,
-				0B62818E235DF01000E35CAF /* LoginViewController.swift */,
 				0B628190235DF01B00E35CAF /* ChatViewController.swift */,
 			);
-			path = Controllers;
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		0B628193235DF03400E35CAF /* Views */ = {
@@ -114,14 +116,6 @@
 				EA6678482A22955B00B734F4 /* MessageCell.xib */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		0B628194235DF03A00E35CAF /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				EA4B258A2A216E0B0071763D /* Message.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		1BA915DB6FA1B7568C698DD8 /* Pods */ = {
@@ -139,6 +133,15 @@
 				26A6152BCB55AF21F479B10A /* Pods_TelegraphChat.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA685D582A2CC595004FD7AE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0B62818E235DF01000E35CAF /* LoginViewController.swift */,
+				EA685D592A2CC5E3004FD7AE /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,9 +270,10 @@
 				EAEB19762A20FC8F005CC535 /* Constants.swift in Sources */,
 				0B628179235DEE8100E35CAF /* SceneDelegate.swift in Sources */,
 				0B62818F235DF01000E35CAF /* LoginViewController.swift in Sources */,
-				EA4B258B2A216E0B0071763D /* Message.swift in Sources */,
 				0B628191235DF01B00E35CAF /* ChatViewController.swift in Sources */,
 				0B62818D235DF00B00E35CAF /* RegisterViewController.swift in Sources */,
+				EA685D5C2A2CCAFB004FD7AE /* Message.swift in Sources */,
+				EA685D5A2A2CC5E3004FD7AE /* LoginViewModel.swift in Sources */,
 				EA6678492A22955B00B734F4 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
