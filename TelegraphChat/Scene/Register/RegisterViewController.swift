@@ -14,17 +14,27 @@ class RegisterViewController: UIViewController {
     
     private let viewModel = RegisterViewModel()
     
+    
+    override func viewDidLoad() {
+        viewModel.delegate = self
+        
+    }
+    
+    
     @IBAction func registerPressed(_ sender: UIButton) {
         
         guard let email = emailTextfield.text, let password = passwordTextfield.text else {
             return
         }
-        
-        viewModel.registerRequest(email: email, password: password) { success in
-            if success {
-                /// Bir error yok ise ChatViewController'a git komutunu segue'nin identifier'i ile gerceklestirir :
-                self.performSegue(withIdentifier: Constants.registerSegue, sender: self)
-            }
-        }
+        viewModel.registerRequest(email: email, password: password)
     }
+}
+
+extension RegisterViewController: RegisterViewModelDelegate {
+    
+    func didSuccess() {
+        /// Bir error yok ise ChatViewController'a git komutunu segue'nin identifier'i ile gerceklestirir :
+        self.performSegue(withIdentifier: Constants.registerSegue, sender: self)
+    }
+    
 }

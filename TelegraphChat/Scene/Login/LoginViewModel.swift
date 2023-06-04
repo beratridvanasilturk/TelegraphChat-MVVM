@@ -17,7 +17,7 @@ final class LoginViewModel {
     typealias SuccessHandler = (_ success: Bool) -> Void
     
     func loginRequest(email: String, password: String, completion: @escaping SuccessHandler) {
-        
+
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             ///Authentication'un  giris yapma kod satiri
             if let e = error {
