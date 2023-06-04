@@ -21,6 +21,7 @@
 		EA685D5C2A2CCAFB004FD7AE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA685D5B2A2CCAFB004FD7AE /* Message.swift */; };
 		EA9B88502A1C2F4B00A9AACC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9B884F2A1C2F4B00A9AACC /* Main.storyboard */; };
 		EAAD1C8B2A1ECC4600D91053 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAAD1C8A2A1ECC4600D91053 /* GoogleService-Info.plist */; };
+		EAAF9A7D2A2CCEED00665AB7 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF9A7C2A2CCEED00665AB7 /* RegisterViewModel.swift */; };
 		EAC483F42A1C2E5300443F13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC483F22A1C2E5300443F13 /* LaunchScreen.storyboard */; };
 		EAD323EF2A1C28F50039D137 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAD323F12A1C28F50039D137 /* Info.plist */; };
 		EAEB19762A20FC8F005CC535 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB19752A20FC8F005CC535 /* Constants.swift */; };
@@ -44,6 +45,7 @@
 		EA7B2A652A1C29BC0089C211 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
 		EA9B884F2A1C2F4B00A9AACC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EAAD1C8A2A1ECC4600D91053 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EAAF9A7C2A2CCEED00665AB7 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		EAC483F32A1C2E5300443F13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = TelegraphChat/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		EAEB19752A20FC8F005CC535 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F101C4DD7E17D689983D59F6 /* Pods-TelegraphChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelegraphChat.release.xcconfig"; path = "Target Support Files/Pods-TelegraphChat/Pods-TelegraphChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,10 +101,10 @@
 		0B628192235DF02000E35CAF /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				EAAF9A7B2A2CCED600665AB7 /* Welcome */,
+				EAAF9A7A2A2CCEC000665AB7 /* Chat */,
+				EAAF9A792A2CCEA200665AB7 /* Register */,
 				EA685D582A2CC595004FD7AE /* Login */,
-				0B62818A235DF00000E35CAF /* WelcomeViewController.swift */,
-				0B62818C235DF00B00E35CAF /* RegisterViewController.swift */,
-				0B628190235DF01B00E35CAF /* ChatViewController.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -142,6 +144,31 @@
 				EA685D592A2CC5E3004FD7AE /* LoginViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		EAAF9A792A2CCEA200665AB7 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0B62818C235DF00B00E35CAF /* RegisterViewController.swift */,
+				EAAF9A7C2A2CCEED00665AB7 /* RegisterViewModel.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		EAAF9A7A2A2CCEC000665AB7 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				0B628190235DF01B00E35CAF /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		EAAF9A7B2A2CCED600665AB7 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				0B62818A235DF00000E35CAF /* WelcomeViewController.swift */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +301,7 @@
 				0B62818D235DF00B00E35CAF /* RegisterViewController.swift in Sources */,
 				EA685D5C2A2CCAFB004FD7AE /* Message.swift in Sources */,
 				EA685D5A2A2CC5E3004FD7AE /* LoginViewModel.swift in Sources */,
+				EAAF9A7D2A2CCEED00665AB7 /* RegisterViewModel.swift in Sources */,
 				EA6678492A22955B00B734F4 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
