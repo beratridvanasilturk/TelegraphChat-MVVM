@@ -44,6 +44,8 @@ class ChatViewController: UIViewController {
         viewModel.logOut(completion: { success in
             if success {
                 print("succeed")
+                self.navigationController?.popToRootViewController(animated: true)
+                ///Sign out basarili oldugunda giris olan kok root ekrana doner, ki bu da bizim karsilama ekranimizdir.
             }
         })
         

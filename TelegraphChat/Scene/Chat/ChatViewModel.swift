@@ -19,7 +19,7 @@ final class ChatViewModel {
     
     let dataBase = Firestore.firestore()
     var messages: [Message] = []
-
+    
     typealias SuccessLoadMessage = (Bool) -> Void
     typealias SuccessLogOut = (Bool) -> Void
     
@@ -27,8 +27,7 @@ final class ChatViewModel {
     func logOut(completion: @escaping SuccessLogOut) {
         do {
             try Auth.auth().signOut()
-            ChatViewController().navigationController?.popToRootViewController(animated: true)
-            ///Sign out basarili oldugunda giris olan kok root ekrana doner, ki bu da bizim karsilama ekranimizdir.
+            
             completion(true)
         } catch let signOutError as NSError {
             completion(false)
@@ -75,9 +74,10 @@ final class ChatViewModel {
                                 }
                                 //UI'in kullanimini engellemeden, queue'yi etkilemeden asyncron sekilde main'de data guncellemesi yapariz.
                             }
+                            completion(true)    
                         }
                     }
-                    completion(true)    
+                  
                 }
             }
     }
