@@ -24,6 +24,8 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        tableView.delegate = self
+        
         navigationItem.hidesBackButton = true
         ///Login olduktan sonra log out butonuyla cikis yapilabilecegi icin back butonunu bu ekranda islevsiz kalir ve bu kod ile back butonu devre disi birakilir
         title = Constants.appName
@@ -33,6 +35,7 @@ class ChatViewController: UIViewController {
         viewModel.loadMessageModel( completion: { succees in
             if succees {
                 print("succeed")
+                
                 DispatchQueue.main.async {
                     self.tableView?.reloadData()
                     let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
@@ -114,10 +117,21 @@ extension ChatViewController: UITableViewDataSource {
         } // Bu else kod satiri diger kullanicinin mesajidir
         
         
+        
      
         return cell
     }
     
+    
+}
+
+extension ChatViewController: UITableViewDelegate {
+    
+    //Bu method kullanici cell'e tiklandiginda tetiklenir.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       //secilen cell'den deSelect etmemizi saglar
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
 }
 
