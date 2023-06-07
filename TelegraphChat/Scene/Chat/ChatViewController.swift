@@ -16,7 +16,6 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var messageTextfield: UITextField!
     
     let dataBase = Firestore.firestore()
-    var messages: [Message] = []
     
     private let viewModel = ChatViewModel()
 ///chatviewmodel icin obje olusturulur
@@ -34,6 +33,12 @@ class ChatViewController: UIViewController {
         viewModel.loadMessageModel( completion: { succees in
             if succees {
                 print("succeed")
+                DispatchQueue.main.async {
+                    self.tableView?.reloadData()
+                    let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
+                    self.tableView?.scrollToRow(at: indexPath, at: .top, animated: true)
+                }
+                //UI'in kullanimini engellemeden, queue'yi etkilemeden asyncron sekilde main'de data guncellemesi yapariz.
             }
         })
     }
@@ -78,13 +83,13 @@ class ChatViewController: UIViewController {
 extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return viewModel.messages.count
     }
     ///Mesajlasma kadar table view row'u olusturur
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let message = messages[indexPath.row]
+        let message = viewModel.messages[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! MessageCell
         cell.label.text = message.body

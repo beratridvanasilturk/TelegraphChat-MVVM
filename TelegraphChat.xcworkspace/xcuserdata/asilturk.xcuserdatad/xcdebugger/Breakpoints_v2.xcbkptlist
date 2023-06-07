@@ -7,62 +7,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4B43B9E5-65B4-4417-89E8-82A6DED3B1B7"
+            uuid = "27646FB1-9E17-4D15-8EA1-FF4ECB641AB8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TelegraphChat/Scene/Chat/ChatViewModel.swift"
+            filePath = "TelegraphChat/Scene/Chat/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "logOut(completion:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2AD891C-0E1F-4370-99E1-82DC1588177C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TelegraphChat/Scene/Chat/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "4B43B9E5-65B4-4417-89E8-82A6DED3B1B7 - e48c44913522053d"
+                  uuid = "D2AD891C-0E1F-4370-99E1-82DC1588177C - db5bc5c54bda411d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TelegraphChat.ChatViewModel.logOut(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in TelegraphChat.ChatViewController.viewDidLoad() -&gt; ()"
                   moduleName = "TelegraphChat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asilturk/Developer/TelegraphChat-MVVM/TelegraphChat/Scene/Chat/ChatViewModel.swift"
+                  urlString = "file:///Users/asilturk/Developer/TelegraphChat-MVVM/TelegraphChat/Scene/Chat/ChatViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "536">
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "394">
                </Location>
                <Location
-                  uuid = "4B43B9E5-65B4-4417-89E8-82A6DED3B1B7 - e48c44913522053d"
+                  uuid = "D2AD891C-0E1F-4370-99E1-82DC1588177C - 86c4bbac189b13fe"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TelegraphChat.ChatViewModel.logOut(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Bool) -&gt; () in TelegraphChat.ChatViewController.viewDidLoad() -&gt; ()"
                   moduleName = "TelegraphChat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asilturk/Developer/TelegraphChat-MVVM/TelegraphChat/Scene/Chat/ChatViewModel.swift"
+                  urlString = "file:///Users/asilturk/Developer/TelegraphChat-MVVM/TelegraphChat/Scene/Chat/ChatViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "1044">
-               </Location>
-               <Location
-                  uuid = "4B43B9E5-65B4-4417-89E8-82A6DED3B1B7 - e48c44913522053d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TelegraphChat.ChatViewModel.logOut(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "TelegraphChat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asilturk/Developer/TelegraphChat-MVVM/TelegraphChat/Scene/Chat/ChatViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "478">
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "106">
                </Location>
             </Locations>
          </BreakpointContent>
