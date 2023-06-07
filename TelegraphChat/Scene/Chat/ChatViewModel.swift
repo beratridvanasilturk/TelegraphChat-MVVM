@@ -10,19 +10,15 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
-
-    
-    
-    
-
 final class ChatViewModel {
     
     let dataBase = Firestore.firestore()
     var messages: [Message] = []
+    let email = Auth.auth().currentUser?.email
     
     typealias SuccessLoadMessage = (Bool) -> Void
     typealias SuccessLogOut = (Bool) -> Void
-    
+    typealias SuccessSendMessage = (Bool) -> Void
     
     func logOut(completion: @escaping SuccessLogOut) {
         do {
@@ -32,6 +28,26 @@ final class ChatViewModel {
         } catch let signOutError as NSError {
             completion(false)
             print("Error signing out: %@", signOutError)
+        }
+    }
+    
+    
+    func sendMessage(_ messageBody: String, completion: @escaping SuccessSendMessage) {
+        
+        if let messageSender = Auth.auth().currentUser?.email {
+            dataBase.collection(Constants.FStore.collectionName).addDocument(data: [ Constants.FStore.senderField: messageSender,
+                                                                                     Constants.FStore.bodyField: messageBody,
+                                                                                     Constants.FStore.dateField: Date().timeIntervalSince1970    ]) { (error) in
+                
+                if let e = error {
+                    print("Some issues with about saving data to firestore. \(e)")
+                    completion(false)
+                } else {
+                    print("Succesfully data saved.")
+                    completion(true)
+                    
+                }
+            }
         }
     }
     

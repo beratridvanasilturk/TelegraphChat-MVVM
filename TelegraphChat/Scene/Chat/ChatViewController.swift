@@ -6,19 +6,16 @@
 //
 
 import UIKit
-import FirebaseCore
-import FirebaseFirestore
-import FirebaseAuth
 
 class ChatViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
     
-    let dataBase = Firestore.firestore()
+    
     
     private let viewModel = ChatViewModel()
-///chatviewmodel icin obje olusturulur
+    ///chatviewmodel icin obje olusturulur
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,28 +56,25 @@ class ChatViewController: UIViewController {
         
     }
     
+    
+    
     @IBAction func sendPressed(_ sender: UIButton) {
         
-        if let messageBody = messageTextfield.text, let messageSender =  Auth.auth().currentUser?.email {
-            dataBase.collection(Constants.FStore.collectionName).addDocument(data: [ Constants.FStore.senderField: messageSender,
-                Constants.FStore.bodyField: messageBody,
-                Constants.FStore.dateField: Date().timeIntervalSince1970    ]) { (error) in
-                if let e = error {
-                    print("Some issues with about saving data to firestore. \(e)")
-                } else {
-                    print("Succesfully data saved.")
-                    
+        
+        if let messageBody = messageTextfield.text {
+            
+            viewModel.sendMessage(messageBody) { success in
+                if success {
                     DispatchQueue.main.async {
                         self.messageTextfield.text = ""
                     }
                     ///Mesaj gonderildikten sonra textfield'i sifirlar
-                 
                 }
             }
         }
     }
     
-
+    
 }
 
 extension ChatViewController: UITableViewDataSource {
@@ -98,7 +92,8 @@ extension ChatViewController: UITableViewDataSource {
         cell.label.text = message.body
         /// Sirasiyla mesajlari text'teki label etiketine atar
         
-        if message.sender == Auth.auth().currentUser?.email {
+    
+        if message.sender == viewModel.email {
             cell.leftImageView.isHidden = true
             cell.rightImageView.isHidden = false
             
@@ -118,7 +113,7 @@ extension ChatViewController: UITableViewDataSource {
         
         
         
-     
+        
         return cell
     }
     
@@ -129,7 +124,7 @@ extension ChatViewController: UITableViewDelegate {
     
     //Bu method kullanici cell'e tiklandiginda tetiklenir.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       //secilen cell'den deSelect etmemizi saglar
+        //secilen cell'den deSelect etmemizi saglar
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
