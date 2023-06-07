@@ -15,7 +15,7 @@ class ChatViewController: UIViewController {
     
     
     private let viewModel = ChatViewModel()
-    ///chatviewmodel icin obje olusturulur
+    //chatviewmodel icin obje olusturulur
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class ChatViewController: UIViewController {
         tableView.delegate = self
         
         navigationItem.hidesBackButton = true
-        ///Login olduktan sonra log out butonuyla cikis yapilabilecegi icin back butonunu bu ekranda islevsiz kalir ve bu kod ile back butonu devre disi birakilir
+        //Login olduktan sonra log out butonuyla cikis yapilabilecegi icin back butonunu bu ekranda islevsiz kalir ve bu kod ile back butonu devre disi birakilir
         title = Constants.appName
         
         tableView.register(UINib(nibName: Constants.cellNibName, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
@@ -46,13 +46,15 @@ class ChatViewController: UIViewController {
     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
         
         
-        viewModel.logOut(completion: { success in
-            if success {
+        
+        viewModel.logOut {
                 print("succeed")
                 self.navigationController?.popToRootViewController(animated: true)
-                ///Sign out basarili oldugunda giris olan kok root ekrana doner, ki bu da bizim karsilama ekranimizdir.
-            }
-        })
+                //Sign out basarili oldugunda giris olan kok root ekrana doner, ki bu da bizim karsilama ekranimizdir.
+        } completionFail: {
+                print("failed")
+        }
+
         
     }
     
@@ -68,7 +70,7 @@ class ChatViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.messageTextfield.text = ""
                     }
-                    ///Mesaj gonderildikten sonra textfield'i sifirlar
+                    //Mesaj gonderildikten sonra textfield'i sifirlar
                 }
             }
         }
@@ -82,7 +84,7 @@ extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.messages.count
     }
-    ///Mesajlasma kadar table view row'u olusturur
+    //Mesajlasma kadar table view row'u olusturur
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -90,7 +92,7 @@ extension ChatViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! MessageCell
         cell.label.text = message.body
-        /// Sirasiyla mesajlari text'teki label etiketine atar
+        //Sirasiyla mesajlari text'teki label etiketine atar
         
     
         if message.sender == viewModel.email {

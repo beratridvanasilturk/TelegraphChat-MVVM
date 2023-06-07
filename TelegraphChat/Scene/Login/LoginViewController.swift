@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
             
             viewModel.loginRequest(email: email, password: password, completion: { [weak self] success in
                 if success {
-                    /// Bir error yok ise ChatViewController'a git komutunu segue'nin identifier'i ile gerceklestirir :
+                    // Bir error yok ise ChatViewController'a git komutunu segue'nin identifier'i ile gerceklestirir :
                     self?.performSegue(withIdentifier: Constants.loginSegue, sender: self)
                 }
             })

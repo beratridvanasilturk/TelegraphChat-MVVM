@@ -33,7 +33,7 @@ class RegisterViewController: UIViewController {
 extension RegisterViewController: RegisterViewModelDelegate {
     
     func didSuccess() {
-        /// Bir error yok ise ChatViewController'a git komutunu segue'nin identifier'i ile gerceklestirir :
+        // Bir error yok ise ChatViewController'a git komutunu segue'nin identifier'i ile gerceklestirir :
         self.performSegue(withIdentifier: Constants.registerSegue, sender: self)
     }
     
