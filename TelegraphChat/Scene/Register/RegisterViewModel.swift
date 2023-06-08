@@ -10,32 +10,18 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
-protocol RegisterViewModelDelegate: AnyObject {
-    func didSuccess()
-    func didFail(error: Error)
-}
-
-extension RegisterViewModelDelegate {
-    func didFail(error: Error) {
-        print(error.localizedDescription)
-    }
-}
-
-final class RegisterViewModel {
+class RegisterViewModel {
     
-    weak var delegate: RegisterViewModelDelegate?
-    
-    func registerRequest(email: String, password: String) {
+    typealias VoidHandler = () -> Void
+
+    func registerRequest(email: String, password: String, CompletionSuccess: @escaping VoidHandler, CompletionFail: @escaping VoidHandler) {
         //Password authentication icin firebase register "kayit ol" butonu tetikleme kodu.
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
-                self?.delegate?.didFail(error: error)
+                CompletionFail()
             } else {
-                self?.delegate?.didSuccess()
+                CompletionSuccess()
             }
         }
     }
-    
-    
-    
 }

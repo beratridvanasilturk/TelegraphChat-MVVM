@@ -12,10 +12,8 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
     
-    
-    
-    private let viewModel = ChatViewModel()
     //chatviewmodel icin obje olusturulur
+    private let viewModel = ChatViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,78 +21,70 @@ class ChatViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        navigationItem.hidesBackButton = true
         //Login olduktan sonra log out butonuyla cikis yapilabilecegi icin back butonunu bu ekranda islevsiz kalir ve bu kod ile back butonu devre disi birakilir
+        navigationItem.hidesBackButton = true
+        
         title = Constants.appName
         
         tableView.register(UINib(nibName: Constants.cellNibName, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
         
         viewModel.loadMessageModel( completion: { succees in
             if succees {
-                print("succeed")
+                print("Load Messages Succeed")
                 
+                //UI'in kullanimini engellemeden, queue'yi etkilemeden asyncron sekilde main'de data guncellemesi yapariz.
                 DispatchQueue.main.async {
                     self.tableView?.reloadData()
                     let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
                     self.tableView?.scrollToRow(at: indexPath, at: .top, animated: true)
                 }
-                //UI'in kullanimini engellemeden, queue'yi etkilemeden asyncron sekilde main'de data guncellemesi yapariz.
             }
         })
     }
     
     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
         
-        
-        
         viewModel.logOut {
-                print("succeed")
-                self.navigationController?.popToRootViewController(animated: true)
-                //Sign out basarili oldugunda giris olan kok root ekrana doner, ki bu da bizim karsilama ekranimizdir.
+            print("succeed")
+            //Sign out basarili oldugunda giris olan kok root ekrana doner, ki bu da bizim karsilama ekranimizdir.
+            self.navigationController?.popToRootViewController(animated: true)
         } completionFail: {
-                print("failed")
+            print("failed")
         }
-
-        
     }
-    
-    
     
     @IBAction func sendPressed(_ sender: UIButton) {
         
-        
         if let messageBody = messageTextfield.text {
             
+            //Mesaj gonderildikten sonra textfield'i sifirlar
             viewModel.sendMessage(messageBody) { success in
                 if success {
                     DispatchQueue.main.async {
                         self.messageTextfield.text = ""
                     }
-                    //Mesaj gonderildikten sonra textfield'i sifirlar
                 }
             }
         }
     }
-    
-    
 }
 
 extension ChatViewController: UITableViewDataSource {
     
+    //Mesajlasma kadar table view row'u olusturur
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.messages.count
     }
-    //Mesajlasma kadar table view row'u olusturur
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let message = viewModel.messages[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! MessageCell
-        cell.label.text = message.body
         //Sirasiyla mesajlari text'teki label etiketine atar
-        
+        cell.label.text = message.body
     
+        // Bu if kod satiri o anki kullanicinin mesajidir
         if message.sender == viewModel.email {
             cell.leftImageView.isHidden = true
             cell.rightImageView.isHidden = false
@@ -102,24 +92,17 @@ extension ChatViewController: UITableViewDataSource {
             cell.messageBuble.backgroundColor = UIColor(named: Constants.BrandColors.lightPurple)
             cell.label.textColor = UIColor(named: Constants.BrandColors.purple)
             
-            // Bu if kod satiri o anki kullanicinin mesajidir
+            // Bu else kod satiri diger kullanicinin mesajidir
         } else {
             cell.leftImageView.isHidden = false
             cell.rightImageView.isHidden = true
             
             cell.messageBuble.backgroundColor = UIColor(named: Constants.BrandColors.lightPurple)
             cell.label.textColor = UIColor(named: Constants.BrandColors.purple)
-            
-            
-        } // Bu else kod satiri diger kullanicinin mesajidir
-        
-        
-        
-        
+               
+        }
         return cell
     }
-    
-    
 }
 
 extension ChatViewController: UITableViewDelegate {
@@ -129,7 +112,6 @@ extension ChatViewController: UITableViewDelegate {
         //secilen cell'den deSelect etmemizi saglar
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
 }
 
 
