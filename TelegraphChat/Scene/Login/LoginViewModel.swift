@@ -14,17 +14,19 @@ import FirebaseAuth
 
 final class LoginViewModel {
     
-    typealias SuccessHandler = (_ success: Bool) -> Void
+//    typealias SuccessHandler = (_ success: Bool) -> Void
+    typealias VoidHandler = () -> Void
     
-    func loginRequest(email: String, password: String, completion: @escaping SuccessHandler) {
+    
+    func loginRequest(email: String, password: String, completionSuccess: @escaping VoidHandler, completionFail: @escaping VoidHandler) {
 
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             //Authentication'un  giris yapma kod satiri
             if let e = error {
                 print(e.localizedDescription)
-                completion(false)
+                completionFail()
             } else {
-                completion(true)
+                completionSuccess()
             }
         }
     }
