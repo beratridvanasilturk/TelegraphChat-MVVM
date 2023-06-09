@@ -53,11 +53,13 @@ final class ChatViewModel {
         
             dataBase.collection(Constants.FStore.collectionName)
             .order(by: Constants.FStore.dateField)
-        //.order ise yuklenecek olan mesaji neye gore ui'da siralamak istiyorsan ona gore duzenlersin, bizim kodumuzda mesajlar tarihe gore siralanmistir. Boylelikle son gonderilen mesaj ui table view'de en altta gorunecektir.
+        // [EN] ".order" is used to organize the message to be uploaded according to what you want to order in the ui, in our code the messages are ordered by date. So the last message sent will appear at the bottom of the ui table view.
+        // [TR] .order ise yuklenecek olan mesaji neye gore ui'da siralamak istiyorsan ona gore duzenlersin, bizim kodumuzda mesajlar tarihe gore siralanmistir. Boylelikle son gonderilen mesaj ui table view'de en altta gorunecektir.
             .addSnapshotListener { (querySnapshot, error) in
                 //.addSnapshotListener: For realtime getting data
                 
-                // Collection'a yeni bir item eklendiginde bu bos olan messages array'imize, yeni mesajimizi eklenmis olur.
+                // [EN] When a new item is added to the "Collection", our new message is added to this empty messages array.
+                // [TR] Collection'a yeni bir item eklendiginde bu bos olan messages array'imize, yeni mesajimizi eklenmis olur.
                 self.messages = []
                 
                 if let e = error {

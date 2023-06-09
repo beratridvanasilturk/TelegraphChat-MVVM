@@ -23,7 +23,8 @@ class RegisterViewController: UIViewController {
             return
         }
         viewModel.registerRequest(email: email, password: password) {
-            // Bir error yok ise ChatViewController'a git komutunu segue'nin identifier'i ile gerceklestirir :
+            // [EN] If there is no error, it executes the Go to ChatViewController command with the identifier of the segue.
+            // [TR] Bir error yok ise ChatViewController'a git komutunu segue'nin identifier'i ile gerceklestirir.
             self.performSegue(withIdentifier: Constants.registerSegue, sender: self)
         } CompletionFail: {
             print("Register Failed")

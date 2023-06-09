@@ -9,9 +9,9 @@ import UIKit
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
-//Firebaseleri ice aktarilir
+// [EN] Firebases are imported
+// [TR] Firebaseleri ice aktarilir
 import IQKeyboardManagerSwift
-//
 
 @UIApplicationMain
 
