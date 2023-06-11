@@ -9,6 +9,7 @@
 
         // [EN] All strings returned by constants Constants Class
         // [TR] Herhangi bir yazim hatasi ile crashi engellemek adina tum var olan stringleri kodlarimizda kullanmak adina constant sinifina cevirdik.
+
 struct Constants {
     
     static let appName = "✉️ TelegraphChat"

@@ -21,14 +21,21 @@ class RegisterViewController: UIViewController {
     @IBAction func registerPressed(_ sender: UIButton) {
         
         guard let email = emailTextfield.text, let password = passwordTextfield.text else {
+            
             return
+            
         }
+        
         viewModel.registerRequest(email: email, password: password) {
+            
             // [EN] If there is no error, it executes the Go to ChatViewController command with the identifier of the segue.
             // [TR] Bir error yok ise ChatViewController'a git komutunu segue'nin identifier'i ile gerceklestirir.
             self.performSegue(withIdentifier: Constants.registerSegue, sender: self)
+            
         } CompletionFail: {
+            
             print("Register Failed")
+            
         }
     }
 }

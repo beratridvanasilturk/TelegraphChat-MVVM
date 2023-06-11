@@ -18,13 +18,19 @@ final class LoginViewModel {
     typealias VoidHandler = () -> Void
     
     func loginRequest(email: String, password: String, completionSuccess: @escaping VoidHandler, completionFail: @escaping VoidHandler) {
+        
         // [EN] Authentication's login code line.
         // [TR] Authentication'un  giris yapma kod satiri
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            
             if let e = error {
+                
                 print(e.localizedDescription)
+                
                 completionFail()
+                
             } else {
+                
                 completionSuccess()
             }
         }
