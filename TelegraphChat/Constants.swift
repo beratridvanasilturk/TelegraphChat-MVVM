@@ -4,8 +4,11 @@
 //
 //  Created by Berat Rıdvan Asiltürk on 26.05.2023.
 //
+// [EN]: English comments have been added for foreign companies.
 
-///Herhangi bir yazim hatasi ile crashi engellemek adina tum var olan stringleri kodlarimizda kullanmak adina constant sinifina cevirdik.
+
+        // [EN] All strings returned by constants Constants Class
+        // [TR] Herhangi bir yazim hatasi ile crashi engellemek adina tum var olan stringleri kodlarimizda kullanmak adina constant sinifina cevirdik.
 struct Constants {
     
     static let appName = "✉️ TelegraphChat"

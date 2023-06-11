@@ -4,6 +4,7 @@
 //
 //  Created by Berat Rıdvan Asiltürk on 5.06.2023.
 //
+// [EN]: English comments have been added for foreign companies.
 
 import Foundation
 import FirebaseCore

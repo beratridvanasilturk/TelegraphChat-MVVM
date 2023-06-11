@@ -4,6 +4,7 @@
 //
 //  Created by Berat Rıdvan Asiltürk on 4.06.2023.
 //
+// [EN]: English comments have been added for foreign companies.
 
 import Foundation
 // [EN] Foundation should never be converted to UIKit in the model section of the MVVM.

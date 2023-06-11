@@ -4,6 +4,8 @@
 //
 //  Created by Berat Ridvan Asilturk 23/05/2023.
 //
+// [EN]: English comments have been added for foreign companies.
+
 import UIKit
 
 class LoginViewController: UIViewController {
