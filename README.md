@@ -1,4 +1,4 @@
-# TelegraphChat-MVVM
+# Telegraph Chat | MVVM
 
 I created a project to make a chat app with MVVM architecture and Firebase framework also i used 3rd party libraries in this project.
 Also the app converted to MVVM from MVC arc.
